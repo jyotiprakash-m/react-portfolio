@@ -27,7 +27,6 @@ const customStyles = {
     width: "450px",
     position: "relative",
     transform: 'translate(-50%, -50%)',
-    padding: "0.5rem"
   },
   overlay: {
     zIndex: 1000

@@ -83,24 +83,20 @@ export const About = ({ isLock, setIsLock }) => {
             }).then(() => {
               setLoading(false)
             }).catch(error => {
-              console.log("Something went wrong")
+              console.log(error.response.data)
             })
 
           }).catch(error => {
-            console.log("Something went wrong")
+            console.log(error.response.data)
           })
         }).catch(error => {
-          console.log("Something went wrong")
+          console.log(error.response.data)
         })
-      }).then(() => {
-
       }).catch(error => {
-        console.log("Something went wrong")
+        console.log(error.response.data)
       })
-
-
     }).catch((error) => {
-      console.log("Something went wrong")
+      console.log(error.response.data)
     })
   }
   // Intial state
@@ -119,7 +115,7 @@ export const About = ({ isLock, setIsLock }) => {
       setIsDataAboutModal(false)
       getData();
     }).catch(error => {
-      console.log("Something went wrong")
+      console.log(error.response.data)
     })
   }
 
@@ -133,7 +129,7 @@ export const About = ({ isLock, setIsLock }) => {
       }).then(() => {
         getData();
       }).catch((error) => {
-        console.log("Something went wrong")
+        console.log(error.response.data)
       })
     }
   }

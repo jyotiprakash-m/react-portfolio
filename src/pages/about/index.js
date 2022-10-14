@@ -83,20 +83,20 @@ export const About = ({ isLock, setIsLock }) => {
             }).then(() => {
               setLoading(false)
             }).catch(error => {
-              console.log(error.response.data)
+              console.log(error.response)
             })
 
           }).catch(error => {
-            console.log(error.response.data)
+            console.log(error.response)
           })
         }).catch(error => {
-          console.log(error.response.data)
+          console.log(error.response)
         })
       }).catch(error => {
-        console.log(error.response.data)
+        console.log(error.response)
       })
     }).catch((error) => {
-      console.log(error.response.data)
+      console.log(error.response)
     })
   }
   // Intial state
@@ -115,7 +115,7 @@ export const About = ({ isLock, setIsLock }) => {
       setIsDataAboutModal(false)
       getData();
     }).catch(error => {
-      console.log(error.response.data)
+      console.log(error.response)
     })
   }
 
@@ -129,7 +129,7 @@ export const About = ({ isLock, setIsLock }) => {
       }).then(() => {
         getData();
       }).catch((error) => {
-        console.log(error.response.data)
+        console.log(error.response)
       })
     }
   }

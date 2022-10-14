@@ -13,24 +13,27 @@ const customStyles = {
     right: 'auto',
     bottom: 'auto',
     marginRight: '-50%',
+    width: "380px",
+    position: "relative",
     transform: 'translate(-50%, -50%)',
   },
   overlay: {
     zIndex: 1000
   },
 };
-const Headermain = () => {
+const Headermain = ({ isLock, setIsLock }) => {
   let subtitle;
+  const [key, setKey] = useState("")
+
   const [isActive, setActive] = useState("false");
-  const [isLock, setIsLock] = useState(false)
   // Modal to login
-  const [modalIsOpen, setIsOpen] = useState(false);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
   function afterOpenModal() {
     subtitle.style.color = '#f00';
   }
 
   function closeModal() {
-    setIsOpen(false);
+    setModalIsOpen(false);
   }
 
   const handleToggle = () => {
@@ -38,11 +41,25 @@ const Headermain = () => {
     document.body.classList.toggle("ovhidden");
   };
   const handleLock = () => {
-    setIsLock(!isLock)
-    setIsOpen(true);
+    if (isLock) {
+      setIsLock(false)
+    } else {
+      setModalIsOpen(true);
+    }
   }
 
-  const handelAuthenticate = () => {
+  const handelAuthenticate = (e) => {
+    e.preventDefault();
+    if (!isLock && key !== "") {
+      if (key === "Welcome1") {
+        setIsLock(true);
+        setModalIsOpen(false);
+      } else {
+        alert("Entered wrong credential")
+      }
+    } else {
+      setIsLock(false)
+    }
 
   }
 
@@ -104,13 +121,12 @@ const Headermain = () => {
         style={customStyles}
         contentLabel="Example Modal"
       >
-        <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Hello</h2>
-        <button onClick={closeModal}>close</button>
-        <div>I am a modal</div>
+        <h3 className="modal_heading" ref={(_subtitle) => (subtitle = _subtitle)}>Enter the key</h3>
         <form onSubmit={handelAuthenticate}>
-          <input />
+          <input onChange={(e) => setKey(e.target.value)} className="modal_input" modal />
           <button type="submit" style={{ display: "none" }} />
         </form>
+        {/* <button className="modal_close" onClick={closeModal}>close</button> */}
       </Modal>
       <div className="br-top"></div>
       <div className="br-bottom"></div>

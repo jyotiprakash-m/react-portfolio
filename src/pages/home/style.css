@@ -40,7 +40,7 @@ section {
 @media (max-width:991.98px) {
     .intro_sec {
         display: block;
-        height: auto!important;
+        height: auto !important;
     }
 }
 
@@ -50,6 +50,7 @@ section {
 }
 
 @media (max-width:991.98px) {
+
     .intro_sec .text,
     .intro_sec .h_bg-image {
         width: 100%;
@@ -70,7 +71,7 @@ section {
 }
 
 .intro_sec .intro .feature .wrap-icon {
-    background: 0 0!important;
+    background: 0 0 !important;
     width: auto;
     height: auto;
     margin-bottom: 0;
@@ -198,6 +199,7 @@ section {
         min-height: 75vh;
         margin-bottom: 30px;
     }
+
     .intro_sec .h_bg-image .block {
         top: unset;
         bottom: 0;
@@ -231,4 +233,37 @@ section {
 
 .intro_sec .h_bg-image {
     filter: saturate(0.5);
+}
+
+/* Modal design */
+.modal_heading {
+    color: #000 !important;
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 2rem;
+}
+
+.modal_input {
+    width: 100%;
+    padding: 5px;
+    min-height: 200px;
+}
+
+.modal_button_container {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: right;
+}
+
+.modal_button {
+    text-align: center;
+}
+
+.modal_close {
+
+    border: none;
+    color: rgb(31, 30, 30);
+    background-color: aliceblue;
+    padding: 8px 16px;
+
 }

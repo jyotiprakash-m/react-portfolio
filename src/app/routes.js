@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Route, Switch, withRouter } from "react-router-dom";
 
 import { Home } from "../pages/home";
@@ -7,9 +7,8 @@ import { ContactUs } from "../pages/contact";
 import { About } from "../pages/about";
 import { Socialicons } from "../components/socialicons";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
-import axios from "axios";
 
-const AnimatedSwitch = withRouter(({ location }) => (
+const AnimatedSwitch = withRouter(({ location, isLock, setIsLock }) => (
   <TransitionGroup>
     <CSSTransition
       key={location.key}
@@ -20,9 +19,10 @@ const AnimatedSwitch = withRouter(({ location }) => (
       classNames="page"
       unmountOnExit
     >
+
       <Switch location={location}>
-        <Route exact path="/" component={() => <Home />} />
-        <Route path="/about" component={About} />
+        <Route exact path="/" component={Home} />
+        <Route path="/about" component={() => <About isLock={isLock} setIsLock={setIsLock} />} />
         <Route path="/portfolio" component={Portfolio} />
         <Route path="/contact" component={ContactUs} />
         <Route path="*" component={Home} />
@@ -31,20 +31,11 @@ const AnimatedSwitch = withRouter(({ location }) => (
   </TransitionGroup>
 ));
 
-function AppRoutes() {
-  useEffect(() => {
-    axios.get("https://jyoti-portfolio-backend.herokuapp.com/products").then((res) => {
-      console.log(res.data)
-    }).catch((error) => {
-      console.log(error.response.data)
-    })
-
-
-  }, [])
+function AppRoutes({ isLock, setIsLock }) {
 
   return (
     <div className="s_c">
-      <AnimatedSwitch />
+      <AnimatedSwitch isLock={isLock} setIsLock={setIsLock} />
       <Socialicons />
     </div>
   );

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {
   BrowserRouter as Router,
@@ -9,7 +9,6 @@ import AppRoutes from "./routes";
 import Headermain from "../header";
 import AnimatedCursor from "react-animated-cursor";
 import "./App.css";
-
 function _ScrollToTop(props) {
   const { pathname } = useLocation();
   useEffect(() => {
@@ -20,6 +19,7 @@ function _ScrollToTop(props) {
 const ScrollToTop = withRouter(_ScrollToTop);
 
 export default function App() {
+  const [isLock, setIsLock] = useState(true);
   return (
     <Router basename={process.env.PUBLIC_URL}>
       <div className="cursor__dot">
@@ -33,8 +33,9 @@ export default function App() {
         />
       </div>
       <ScrollToTop>
-        <Headermain />
-        <AppRoutes />
+
+        <Headermain isLock={isLock} setIsLock={setIsLock} />
+        <AppRoutes isLock={isLock} setIsLock={setIsLock} />
       </ScrollToTop>
     </Router>
   );

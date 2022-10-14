@@ -18,7 +18,9 @@ export const Portfolio = () => {
             <h1 className="display-4 mb-4"> Portfolio </h1>{" "}
             <hr className="t_border my-4 ml-0 text-left" />
           </Col>
+          {/* Add button */}
         </Row>
+        {/* Search functionality */}
         <div className="mb-5 po_items_ho">
           {dataportfolio.map((data, i) => {
             return (

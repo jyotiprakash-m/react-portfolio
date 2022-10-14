@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Route, Switch, withRouter } from "react-router-dom";
 
 import { Home } from "../pages/home";
@@ -7,6 +7,7 @@ import { ContactUs } from "../pages/contact";
 import { About } from "../pages/about";
 import { Socialicons } from "../components/socialicons";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
+import axios from "axios";
 
 const AnimatedSwitch = withRouter(({ location }) => (
   <TransitionGroup>
@@ -20,7 +21,7 @@ const AnimatedSwitch = withRouter(({ location }) => (
       unmountOnExit
     >
       <Switch location={location}>
-        <Route exact path="/" component={Home} />
+        <Route exact path="/" component={() => <Home />} />
         <Route path="/about" component={About} />
         <Route path="/portfolio" component={Portfolio} />
         <Route path="/contact" component={ContactUs} />
@@ -31,6 +32,16 @@ const AnimatedSwitch = withRouter(({ location }) => (
 ));
 
 function AppRoutes() {
+  useEffect(() => {
+    axios.get("https://jyoti-portfolio-backend.herokuapp.com/products").then((res) => {
+      console.log(res.data)
+    }).catch((error) => {
+      console.log(error.response.data)
+    })
+
+
+  }, [])
+
   return (
     <div className="s_c">
       <AnimatedSwitch />

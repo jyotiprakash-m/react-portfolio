@@ -54,28 +54,28 @@ export const About = ({ isLock, setIsLock }) => {
 
   const getData = async () => {
     setLoading(true)
-    axios.get("/dataabout").then((res) => {
+    axios.get("https://jyoti-portfolio-backend.herokuapp.com/dataabout").then((res) => {
       setAbout(previousState => {
         return { ...previousState, dataabout: res.data }
       });
       // Getting work time
-      axios.get("/worktimeline").then((res) => {
+      axios.get("https://jyoti-portfolio-backend.herokuapp.com/worktimeline").then((res) => {
         setAbout(previousState => {
           return { ...previousState, worktimeline: res.data }
         });
         // Getting skills
-        axios.get("/skills").then((res) => {
+        axios.get("https://jyoti-portfolio-backend.herokuapp.com/skills").then((res) => {
           setAbout(previousState => {
             return { ...previousState, skills: res.data }
           });
 
           // Getting service
-          axios.get("/services").then((res) => {
+          axios.get("https://jyoti-portfolio-backend.herokuapp.com/services").then((res) => {
             setAbout(previousState => {
               return { ...previousState, services: res.data }
             });
             // Getting dataportfolio
-            axios.get("/dataportfolio").then((res) => {
+            axios.get("https://jyoti-portfolio-backend.herokuapp.com/dataportfolio").then((res) => {
               setAbout(previousState => {
                 return { ...previousState, dataportfolio: res.data }
               });
